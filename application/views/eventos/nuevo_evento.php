@@ -1,49 +1,69 @@
-<div class="row">
-    <div class="column">
-    	<h3>Nuevo Usuario</h3>
-    	<hr>
-        <?php
-        	echo validation_errors('<div class=error>','</div>');
-        	echo form_open('eventos/adicionar_eve');
-            
-        	echo form_label('*Nombre del Evento','txtnomeve');
-            echo form_input('txtnomeve');
-            
-            
-            echo form_label('*Tipo de Evento','txttipoeve');
-            echo "<select name='txttipoeve'>";
-                echo "<option value='congreso'" . set_select('txttipoeve', 'congreso') . ">Congreso</option>";
-                echo "<option value='conversatorio'" . set_select('txttipoeve', 'conversatorio') . ">Conversatorio</option>";
-                echo "<option value='seminario'" . set_select('txttipoeve', 'seminario') . ">Seminario</option>";
-            echo "</select>";
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-8 m-auto" id="forms">
+        	<h3>Nuevo Evento</h3>
+        	<hr>
+            <?php
+                $submit = array(
+                        'name'  => 'cmdEnviar',
+                        'class' => 'btn btn-indigo lighten-1 ',
+                        'value' => 'Registrar'
+                    );
 
-            
-            echo form_label('*Lugar Evento','txtlugeve');
-            echo form_input('txtlugeve');
-
-            echo form_label('*Fecha Inicio','txtfechaIneve');
-            echo "<input type='date' name='txtfechaIneve' value='" . date('Y-m-d') . "'>";
-
-            echo form_label('*Fecha Finalización','txtfechaFneve');
-            echo "<input type='date' name='txtfechaFneve' value='" . date('Y-m-d') . "'>";
-
-            echo "<br>";
-
-            echo form_label('*Valor Evento','txtvaleve');
-            echo form_input('txtvaleve');
-            
-            echo form_label('*Usuario','txtusuario');
-            echo "<select name='txtusuario'>";
-            foreach ($usuarios as $row) {
+            	echo validation_errors('<div class=error>','</div>');
+            	echo form_open('eventos/adicionar_eve');
                 
-                echo "<option value=". $row['id_usu'] . set_select('txtusuario', $row['id_usu']) . ">".$row['nombre_usu']."</option>";
-            }
-            echo "</select>";
-            
-        	echo "<hr>";
-        	echo form_submit('cmdEnviar','Registrar');
-        	echo form_close();
-        ?>
+                echo "<div > <i class='fa fa-tag   prefix'></i>";
+                	echo form_label('&nbsp; *Nombre del Evento','txtnomeve');
+                    echo form_input('txtnomeve');
+                echo "</div><br>";
+                
+                echo "<div > <i class='fa fa-database   prefix'></i>";
+                    echo form_label('&nbsp; *Tipo de Evento','txttipoeve');
+                    echo "<br>";
+                    echo "<select name='txttipoeve'class='selectpicker'data-style='btn btn-unique'>";
+                        echo "<option value='Congreso'" . set_select('txttipoeve', 'Congreso') . ">Congreso</option>";
+                        echo "<option value='Conversatorio'" . set_select('txttipoeve', 'Conversatorio') . ">Conversatorio</option>";
+                        echo "<option value='Seminario'" . set_select('txttipoeve', 'Seminario') . ">Seminario</option>";
+                    echo "</select>";
+                echo "</div><br>";
+
+                echo "<div > <i class='fa fa-building prefix'></i>";
+                    echo form_label('&nbsp; *Lugar Evento','txtlugeve');
+                    echo form_input('txtlugeve');
+                echo "</div> <br>";
+
+                echo "<div > <i class='fa fa-calendar prefix'></i>";
+                    echo form_label('&nbsp; *Fecha Inicio','txtfechaIneve');
+                    echo "<input type='date' name='txtfechaIneve' value='" . date('Y-m-d') . "'>";
+                echo "</div> <br>";
+
+                echo "<div > <i class='fa fa-calendar prefix'></i>";
+                    echo form_label('&nbsp; *Fecha Finalización','txtfechaFneve');
+                    echo "<input type='date' name='txtfechaFneve' value='" . date('Y-m-d') . "'>";
+                echo "</div> <br>";
+
+                echo "<div > <i class='fa fa-money prefix'></i>";
+                    echo form_label('&nbsp; *Valor Evento','txtvaleve');
+                    echo form_input('txtvaleve');
+                echo "</div> <br>";
+                
+                echo "<div > <i class='fa fa-user-o prefix'></i>";
+                    echo form_label('&nbsp; *Usuario','txtusuario');
+                    echo "<br>";
+                    echo "<select name='txtusuario'class='selectpicker'data-style='btn btn-unique'>";
+                    foreach ($usuarios as $row) {
+                        
+                        echo "<option value=". $row['id_usu'] . set_select('txtusuario', $row['id_usu']) . ">".$row['nombre_usu']."</option>";
+                    }
+                    echo "</select>";
+                echo "</div> <br> <br> <br>";
+                
+            	echo "<div align= 'center' >";
+                       echo form_submit($submit);
+                echo "</div>";
+            	echo form_close();
+            ?>
+        </div>
     </div>
-    <div class="column"></div>
  </div>

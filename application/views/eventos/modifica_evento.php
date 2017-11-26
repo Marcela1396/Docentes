@@ -1,50 +1,77 @@
-<div class="row">
-    <div class="column">
-    	<h3>Actualiza Usuario</h3>
-    	<hr>
-        <?php
-        	echo validation_errors('<div class=error>','</div>');
-        	echo form_open('eventos/modificar_evento');
-            
-            echo form_hidden('txtideve', $eventos['id_eve']);
-
-        	echo form_label('*Nombre del Evento','txtnomeve');
-            echo form_input('txtnomeve', $eventos['nombre_eve']);
-            
-            echo form_label('*Tipo de Evento','txttipoeve');
-            echo "<select name='txttipoeve'>";
-                echo "<option value='congreso'" . set_select('txttipoeve', 'congreso') . ">Congreso</option>";
-                echo "<option value='conversatorio'" . set_select('txttipoeve', 'conversatorio') . ">Conversatorio</option>";
-                echo "<option value='seminario'" . set_select('txttipoeve', 'seminario') . ">Seminario</option>";
-            echo "</select>";
-
-            
-            echo form_label('*Lugar Evento','txtlugeve');
-            echo form_input('txtlugeve', $eventos['lugar_eve']);
-
-            echo form_label('*Fecha Inicio','txtfechaIneve');
-            echo "<input type='date' name='txtfechaIneve' value='" . $eventos['fecha_ini_eve'] . "'>";
-
-            echo form_label('*Fecha Finalización','txtfechaFneve');
-            echo "<input type='date' name='txtfechaFneve' value='" .  $eventos['fecha_fin_eve'] . "'>";
-
-            echo "<br>";
-
-            echo form_label('*Valor Evento','txtvaleve');
-            echo form_input('txtvaleve',  $eventos['valor_eve']);
-            
-            echo form_label('*Usuario','txtusuario');
-            echo "<select name='txtusuario'>";
-            foreach ($usuarios as $row) {
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-8 m-auto" id="forms">
+            <h3>Actualiza Evento</h3>
+            <hr>
+            <?php
+                $submit = array(
+                            'name'  => 'cmdEnviar',
+                            'class' => 'btn btn-indigo lighten-1 ',
+                            'value' => 'Actualizar'
+                );
+                echo validation_errors('<div class=error>','</div>');
+                echo form_open('eventos/modificar_evento');
                 
-                echo "<option value=". $row['id_usu'] . set_select('txtusuario', $row['id_usu']) . ">".$row['nombre_usu']."</option>";
-            }
-            echo "</select>";
-            
-        	echo "<hr>";
-        	echo form_submit('cmdEnviar','Actualizar');
-        	echo form_close();
-        ?>
+                echo form_hidden('txtideve', $eventos['id_eve']);
+
+                echo "<div > <i class='fa  fa-tag  prefix'></i>";
+                    echo form_label('&nbsp; *Nombre del Evento','txtnomeve');
+                    echo form_input('txtnomeve', $eventos['nombre_eve']);
+                echo "</div> </br>";
+                
+                echo "<div > <i class='fa fa-database prefix'></i>";
+                    echo form_label('&nbsp; *Tipo de Evento','txttipoeve');
+                    echo "<br>";
+                    echo "<select name='txttipoeve'class='selectpicker'data-style='btn btn-unique'>";
+                        echo "<option value='Congreso'" . set_select('txttipoeve', 'Congreso') . " ".(($eventos['tipo_eve'] == "Congreso" ) ? "selected" : "").">Congreso</option>";
+                        echo "<option value='Conversatorio'" . set_select('txttipoeve', 'Conversatorio') . " ".(($eventos['tipo_eve'] == "Conversatorio" ) ? "selected" : "").">Conversatorio</option>";
+                        echo "<option value='Seminario'".set_select('txttipoeve', 'Seminario') . " ".(($eventos['tipo_eve'] == "Seminario" ) ? "selected" : "").">Seminario</option>";  
+                    echo "</select> <br>";
+                echo "</div> </br>";
+
+                echo "<div > <i class='fa fa-building  prefix'></i>";
+                    echo form_label('&nbsp; *Lugar Evento','txtlugeve');
+                    echo form_input('txtlugeve', $eventos['lugar_eve']);
+                echo "</div> </br>";
+
+                echo "<div > <i class='fa fa-calendar  prefix'></i>";
+                    echo form_label('&nbsp; *Fecha Inicio','txtfechaIneve');
+                    echo "<input type='date' name='txtfechaIneve' value='" . $eventos['fecha_ini_eve'] . "'>";
+                echo "</div> </br>";
+
+                echo "<div > <i class='fa fa-calendar prefix'></i>";
+                    echo form_label('&nbsp; *Fecha Finalización','txtfechaFneve');
+                    echo "<input type='date' name='txtfechaFneve' value='" .  $eventos['fecha_fin_eve'] . "'>";
+                echo "</div> </br>";
+
+                echo "<div > <i class='fa fa-money prefix'></i>";
+                    echo form_label('&nbsp; *Valor Evento','txtvaleve');
+                    echo form_input('txtvaleve',  $eventos['valor_eve']);
+                echo "</div> </br>";
+
+                echo "<div > <i class='fa fa-user-o prefix'></i>";
+                    echo form_label('&nbsp; *Usuario','txtusuario');
+                    echo "<br> <select name='txtusuario' class='selectpicker'data-style='btn btn-unique'>";
+                    foreach ($usuarios as $row) {
+                        if ($eventos["usuario"] == $row['id_usu']) 
+                        {
+                            echo "<option value=". $row['id_usu'] . set_select('txtusuario', $row['id_usu']) . " selected>".$row['nombre_usu']."</option>";
+                        }
+                        else
+                        {
+                            echo "<option value=". $row['id_usu'] . set_select('txtusuario', $row['id_usu']) . ">".$row['nombre_usu']."</option>";
+                        }
+                        
+                    }
+                    echo "</select>";
+                echo "</div> </br>";
+                
+                echo "<br><br>";
+                echo "<div align= 'center' >";
+                       echo form_submit($submit);
+                echo "</div>";
+                echo form_close();
+            ?>
+        </div>
     </div>
-    <div class="column"></div>
  </div>

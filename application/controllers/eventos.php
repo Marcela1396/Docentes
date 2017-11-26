@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Eventos extends CI_Controller {
 
 	public function adicionar_eve(){
+		if ($this->session->userdata('rol') != 'administrador') redirect('inicio');
+
 		$this->load->view('encabezado');
 		$this->load->view('menu_adm');
 		$this->form_validation->set_rules('txtnomeve','Nombre Evento','required');
@@ -28,6 +30,7 @@ class Eventos extends CI_Controller {
 	}
 
 	public function listar_eve($par){
+		if ($this->session->userdata('rol') != 'administrador') redirect('inicio');
 		$this->load->view('encabezado');
         $this->load->view('menu_adm');
         $this->load->model('m_eventos');
@@ -46,6 +49,7 @@ class Eventos extends CI_Controller {
 	}
 
 	public function modificar_evento(){
+		if ($this->session->userdata('rol') != 'administrador') redirect('inicio');
 
         $this->load->view('encabezado');
         $this->load->view('menu_adm');
@@ -74,6 +78,7 @@ class Eventos extends CI_Controller {
     }
 
     public function eliminar_evento(){
+    	if ($this->session->userdata('rol') != 'administrador') redirect('inicio');
     	$this->load->view('encabezado');
         $this->load->view('menu_adm');
         $this->load->model('m_eventos');
