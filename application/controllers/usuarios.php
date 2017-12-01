@@ -16,6 +16,7 @@ class Usuarios extends CI_Controller {
 			// Si es docentre entra al menu Docente
 			$this->load->view('encabezado');
 			$this->load->view('menu_doc');
+			$this->load->view('cuerpo_doc');
 		}
 		else{
 			$res['mensaje'] = "Sesión no inicializada";
@@ -117,4 +118,5 @@ class Usuarios extends CI_Controller {
         $res['usuarios'] = $this->m_usuarios->consultar_usuarios();
         $this->load->view('administrador/listar_usuarios',$res);
 	}
+
 }

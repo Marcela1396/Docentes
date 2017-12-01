@@ -1,3 +1,15 @@
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-12 m-auto">
+            <div class="card" style="background-color:#ad1457">
+                <p id="mess">   
+                    Universidad de Nariño - Información General
+                </p>
+            </div>
+        </div>
+    </div>
+</div> <br>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-6 ">

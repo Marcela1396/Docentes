@@ -1,6 +1,6 @@
 <div class="container" >
     <div class="row">
-        <div class="col-lg-8 m-auto" id="forms">
+        <div class="col-lg-8 m-auto" id="forms" style="background-color: white">
         	<h3>Nuevo Evento</h3>
         	<hr>
             <?php

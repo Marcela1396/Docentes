@@ -1,6 +1,6 @@
 <div class="container" >
     <div class="row">
-        <div class="col-lg-8 m-auto" id="forms">
+        <div class="col-lg-8 m-auto" id="forms" style="background-color: white">
 
         	<h3>Actualizar Información de Usuario</h3>
         	<hr>
@@ -42,6 +42,12 @@
                          echo "<option value='administrador'" . set_select('txtrolusu', 'administrador') . ">Administrador</option>";
                     }
                     echo "</select><br></div><br> <br>";
+
+                
+                echo "<div > <i class='fa fa-user-plus   prefix'></i>";
+                        echo form_label('&nbsp; *Foto del Usuario','txtnomusu');
+                        echo "&nbsp; &nbsp; <input type='file' name='fotousu'>";
+                    echo "<div> <br>";
 
             	echo "<div align= 'center' >";
                        echo form_submit($submit);

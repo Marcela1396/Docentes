@@ -74,9 +74,17 @@
 
 #bienvenida{
     font-family: Lobster;
-    font-size: 25px;
+    font-size: 22px;
     color: white;
     text-align: center;
+}
+
+#mess{
+    font-family: Lobster;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+
 }
 a{
     font-family: Acme;

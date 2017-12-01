@@ -1,6 +1,6 @@
 <div class="container" >
-    <div class="row">
-        <div class="col-lg-8 m-auto" id="forms">
+    <div class="row" >
+        <div class="col-lg-8 m-auto" id="forms" style="background-color: white">
             	<h3>Nuevo Usuario</h3>
             	<hr>
                 <?php
@@ -30,7 +30,12 @@
                     	echo "<select name='txtrolusu' class='selectpicker'data-style='btn btn-unique'>";
                             echo "<option value='administrador'" . set_select('txtrolusu', 'administrador') . ">Administrador</option>";
                             echo "<option value='docente'" . set_select('txtrolusu', 'docente') . ">Docente</option>";
-                        echo "</select> </div>";
+                        echo "</select> </div> <br><br>";
+
+                    echo "<div > <i class='fa fa-user-plus   prefix'></i>";
+                        echo form_label('&nbsp; *Foto del Usuario','txtnomusu');
+                        echo "&nbsp; &nbsp; <input type='file' name='fotousu'>";
+                    echo "<div> <br>";
                     
                 	echo "<hr>";
                     echo "<div align= 'center' >";
@@ -42,3 +47,4 @@
     </div>
 </div>
   
+

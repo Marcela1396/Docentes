@@ -12,7 +12,7 @@
 			            <th id="titles">Rol</th>
 			        </tr>
 			    </thead>
-			    <tbody class="mdb-color pink lighten-4" >
+			    <tbody class="mdb-color pink lighten-5" >
 			    	<?php 
 			    	foreach ($usuarios as $row) {
 			    		echo "<tr class='text-black'>";
